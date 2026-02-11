@@ -1,0 +1,137 @@
+:root {
+    --pastel-lavender: #e6e6fa;
+    --glass-bg: rgba(255, 255, 255, 0.8);
+    --text-color: #5a5a5a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #f0f0f0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* --- ROOM CONTAINER --- */
+.room-container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px; /* Adjust based on your screen size */
+    aspect-ratio: 1500 / 1000; /* Matches your image dimensions */
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    
+    /* REPLACE 'room.png' with the name of your saved image file */
+    background-image: url('room.png'); 
+}
+
+/* --- SUNLIGHT ANIMATION --- */
+.sunlight-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(110deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 50%);
+    pointer-events: none;
+    animation: sunlightPulse 8s infinite alternate ease-in-out;
+}
+
+@keyframes sunlightPulse {
+    0% { opacity: 0.2; }
+    100% { opacity: 0.5; }
+}
+
+/* --- COORDINATES FOR YOUR IMAGE --- */
+.click-area {
+    position: absolute;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+/* Debugging: Uncomment 'background: red;' to see the boxes while testing */
+.poster {
+    top: 16.5%;
+    left: 31%;
+    width: 13.5%;
+    height: 27.5%;
+}
+
+.table {
+    top: 54%;
+    left: 5%;
+    width: 32%;
+    height: 38%;
+}
+
+.bed {
+    top: 49%;
+    left: 45%;
+    width: 53%;
+    height: 48%;
+}
+
+.click-area:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* --- POPUP STYLES --- */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    transition: opacity 0.4s ease;
+}
+
+.popup-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.popup-content {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    padding: 30px;
+    border-radius: 24px;
+    width: 380px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.4);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.popup-content h2 {
+    color: #9a8cda;
+    margin-bottom: 15px;
+}
+
+.popup-content p {
+    color: var(--text-color);
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #aaa;
+}
